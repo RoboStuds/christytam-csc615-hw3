@@ -27,6 +27,8 @@
 #define motor2_fwd 4
 #define motor2_bwrd 5
 
+int speed =
+//init ()
 int setup(){
     pinMode(motor1_e,OUTPUT);
     pinMode(motor1_fwd,OUTPUT);
@@ -40,14 +42,25 @@ int setup(){
     softPwmCreate(motor2_e, 0, 100);
 }
 
-int foward( int forward, int backward, int speed)
+int move(int forward, int backward, int speed)
 {
-   if digitalWrite(motor1_fwd, LOW);
+    softPwmWrite(motor1_e, speed);
+    softPwmWrite(motor2_e, speed);
+
+    if()
+
+
+}
+int foward(int forward, int backward, int speed)
+{
+   if(){
+       
+   }
    else
    {
        digitalWrite(motor1_fwd, HIGH);
-       digitalWrite(motor2_fwd, HIGH);
        digitalWrite(motor1_bwrd, LOW);
+       digitalWrite(motor2_fwd, HIGH);
        digitalWrite(motor1_bwrd, LOW);
    }
    
@@ -57,13 +70,12 @@ int backward() {
     else
     {
         digitalWrite(motor1_fwd, LOW);
-        digitalWrite(motor2_fwd, LOW);
         digitalWrite(motor1_bwrd, HIGH);
+        digitalWrite(motor2_fwd, LOW);
         digitalWrite(motor2_bwrd, HIGH);
-    }
-    
-    
+    } 
 }
+
 int stop() {
     digitalWrite(motor1_e, LOW);
     digitalWrite(motor1_fwd, LOW);
@@ -72,6 +84,7 @@ int stop() {
     digitalWrite(motor2_fwd, LOW);
     digitalWrite(motor2_bwrd, LOW);
 }
+
 int main(void)
 {
     wiringPiSetup();
@@ -82,18 +95,9 @@ int main(void)
         return 0;
     }
 
-    pinMode(motor1_e,OUTPUT);
-    pinMode(motor1_fwd,OUTPUT);
-    pinMode(motor1_bwrd,OUTPUT);
-
-    pinMode(motor2_e,OUTPUT);
-    pinMode(motor2_fwd,OUTPUT);
-    pineMode(motor2_bwrd,OUTPUT) ;
-
-    softPwmCreate(motor1_e, 0, 100);
-    softPwmCreate(motor2_e, 0, 100);
-
-    while(fowards)
+    while(1) {
+        if(!digitalRead())
+    }
 
 
 }
