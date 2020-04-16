@@ -29,7 +29,7 @@
 
 int speed = 50;
 
-int setup()
+void setup()
 {
     pinMode(motor1_e,OUTPUT);
     pinMode(motor1_fwd,OUTPUT);
@@ -37,7 +37,7 @@ int setup()
 
     pinMode(motor2_e,OUTPUT);
     pinMode(motor2_fwd,OUTPUT);
-    pineMode(motor2_bwrd,OUTPUT) ;
+    pinMode(motor2_bwrd,OUTPUT);
 
     softPwmCreate(motor1_e, 0, 100);
     softPwmCreate(motor2_e, 0, 100);
@@ -45,6 +45,7 @@ int setup()
 
 int foward()
 {
+    printf("Moving foward.\n");
     digitalWrite(motor1_fwd, HIGH);
     digitalWrite(motor1_bwrd, LOW);
     digitalWrite(motor2_fwd, HIGH);
@@ -52,6 +53,7 @@ int foward()
 }
 
 int backward() {
+    printf("Moving backwards.\n");
     digitalWrite(motor1_fwd, LOW);
     digitalWrite(motor1_bwrd, HIGH);
     digitalWrite(motor2_fwd, LOW);
@@ -60,6 +62,7 @@ int backward() {
 
 int stop() 
 {
+    printf("Stops.\n");
     digitalWrite(motor1_e, LOW);
     digitalWrite(motor1_fwd, LOW);
     digitalWrite(motor1_bwrd, LOW);
@@ -71,7 +74,7 @@ int stop()
 int changeSpeed(int speed)
 {
     softPwmWrite(motor1_e, speed);
-    softPwnWrite(motor2_e, speed);
+    softPwmWrite(motor2_e, speed);
 }
 
 int main(void)
@@ -80,7 +83,7 @@ int main(void)
 
     if(wiringPiSetup() == -1)
     {
-        printf("Setup has failed.\n")
+        printf("Setup has failed.\n");
         return 0;
     }
 
