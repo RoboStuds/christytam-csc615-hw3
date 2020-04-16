@@ -43,7 +43,7 @@ void setup()
     softPwmCreate(motor2_e, 0, 100);
 }
 
-int foward()
+void foward()
 {
     printf("Moving foward.\n");
     digitalWrite(motor1_fwd, HIGH);
@@ -52,7 +52,7 @@ int foward()
     digitalWrite(motor1_bwrd, LOW);
 }
 
-int backward() {
+void backward() {
     printf("Moving backwards.\n");
     digitalWrite(motor1_fwd, LOW);
     digitalWrite(motor1_bwrd, HIGH);
@@ -60,7 +60,7 @@ int backward() {
     digitalWrite(motor2_bwrd, HIGH);
 }
 
-int stop() 
+void stop() 
 {
     printf("Stops.\n");
     digitalWrite(motor1_e, LOW);
@@ -71,7 +71,7 @@ int stop()
     digitalWrite(motor2_bwrd, LOW);
 }
 
-int changeSpeed(int speed)
+void changeSpeed(int speed)
 {
     softPwmWrite(motor1_e, speed);
     softPwmWrite(motor2_e, speed);
@@ -97,7 +97,7 @@ int main(void)
         stop();
         delay(5000);
 
-        i++
+        i++;
     }
     return 0;
 }
