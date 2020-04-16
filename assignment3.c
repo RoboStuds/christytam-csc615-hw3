@@ -27,7 +27,7 @@
 #define motor2_fwd 4
 #define motor2_bwrd 5
 
-int speed = 50;
+int speed = 30;
 
 void setup()
 {
@@ -46,6 +46,8 @@ void setup()
 void foward()
 {
     printf("Moving foward.\n");
+    digitalWrite(motor1_e, HIGH);
+    digitalWrite(motor2_e, HIGH);
     digitalWrite(motor1_fwd, HIGH);
     digitalWrite(motor1_bwrd, LOW);
     digitalWrite(motor2_fwd, HIGH);
@@ -54,6 +56,8 @@ void foward()
 
 void backward() {
     printf("Moving backwards.\n");
+    digitalWrite(motor1_e, HIGH);
+    digitalWrite(motor2_e, HIGH);
     digitalWrite(motor1_fwd, LOW);
     digitalWrite(motor1_bwrd, HIGH);
     digitalWrite(motor2_fwd, LOW);
@@ -87,9 +91,12 @@ int main(void)
         return 0;
     }
 
+    setup();
+    
     int i = 0;
     while(i < 2) 
     {
+        changeSpeed(speed);
         foward();
         delay(5000);
         backward();
@@ -97,6 +104,7 @@ int main(void)
         stop();
         delay(5000);
 
+        speed += 20;
         i++;
     }
     return 0;
