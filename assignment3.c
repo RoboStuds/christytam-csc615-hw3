@@ -27,9 +27,10 @@
 #define motor2_fwd 4
 #define motor2_bwrd 5
 
-int speed =
-//init ()
-int setup(){
+int speed = 50;
+
+int setup()
+{
     pinMode(motor1_e,OUTPUT);
     pinMode(motor1_fwd,OUTPUT);
     pinMode(motor1_bwrd,OUTPUT);
@@ -42,47 +43,35 @@ int setup(){
     softPwmCreate(motor2_e, 0, 100);
 }
 
-int move(int forward, int backward, int speed)
+int foward()
 {
-    softPwmWrite(motor1_e, speed);
-    softPwmWrite(motor2_e, speed);
-
-    if()
-
-
+    digitalWrite(motor1_fwd, HIGH);
+    digitalWrite(motor1_bwrd, LOW);
+    digitalWrite(motor2_fwd, HIGH);
+    digitalWrite(motor1_bwrd, LOW);
 }
-int foward(int forward, int backward, int speed)
-{
-   if(){
-       
-   }
-   else
-   {
-       digitalWrite(motor1_fwd, HIGH);
-       digitalWrite(motor1_bwrd, LOW);
-       digitalWrite(motor2_fwd, HIGH);
-       digitalWrite(motor1_bwrd, LOW);
-   }
-   
-}
+
 int backward() {
-    if 
-    else
-    {
-        digitalWrite(motor1_fwd, LOW);
-        digitalWrite(motor1_bwrd, HIGH);
-        digitalWrite(motor2_fwd, LOW);
-        digitalWrite(motor2_bwrd, HIGH);
-    } 
+    digitalWrite(motor1_fwd, LOW);
+    digitalWrite(motor1_bwrd, HIGH);
+    digitalWrite(motor2_fwd, LOW);
+    digitalWrite(motor2_bwrd, HIGH);
 }
 
-int stop() {
+int stop() 
+{
     digitalWrite(motor1_e, LOW);
     digitalWrite(motor1_fwd, LOW);
     digitalWrite(motor1_bwrd, LOW);
     digitalWrite(motor2_e, LOW);
     digitalWrite(motor2_fwd, LOW);
     digitalWrite(motor2_bwrd, LOW);
+}
+
+int changeSpeed(int speed)
+{
+    softPwmWrite(motor1_e, speed);
+    softPwnWrite(motor2_e, speed);
 }
 
 int main(void)
@@ -95,9 +84,17 @@ int main(void)
         return 0;
     }
 
-    while(1) {
-        if(!digitalRead())
+    int i = 0;
+    while(i < 2) 
+    {
+        foward();
+        delay(5000);
+        backward();
+        delay(5000);
+        stop();
+        delay(5000);
+
+        i++
     }
-
-
+    return 0;
 }
